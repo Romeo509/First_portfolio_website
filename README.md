@@ -1,4 +1,4 @@
-Portfolio Website
+#Portfolio Website
 Description
 This is a personal portfolio website showcasing my projects, skills, and experience. It serves as a professional introduction and a way to present my work to potential employers and collaborators.
 
@@ -23,4 +23,4 @@ Screenshot
 Here's a preview of the portfolio website:
 
 
-![Screenshot](screen_shot.png)
+![Screenshot](scrren_shot.png)
