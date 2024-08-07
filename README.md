@@ -23,3 +23,4 @@ Screenshot
 Here's a preview of the portfolio website:
 
 
+![Screenshot](screen_shot.png)
