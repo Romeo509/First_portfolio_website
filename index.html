@@ -5,27 +5,199 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Portfolio Website HTML CSS Only | Codehal</title>
+    <title>My Portfolio | Romeo Newo</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Additional styles for new sections */
+        .section {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 70px 10% 0;
+        }
+        
+        .section.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
+        /* About section styles */
+        .about-content, .skills-content, .portfolio-content, .pitch-content {
+            max-width: 600px;
+        }
+        
+        .about-content {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+        .about-content h2, .skills-content h2, .portfolio-content h2, .pitch-content h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: slideRight 2s ease forwards;
+        }
+
+        .about-content p, .skills-content p, .portfolio-content p, .pitch-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            animation: slideLeft 2s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+         .skills-img, .portfolio-img, .pitch-img {
+            width: 410px;
+            height: 410px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
+        }
+
+        /* Updated Video container styles */
+        .video-container {
+            position: relative;
+            width: 500px;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Center elevator pitch video */
+        #pitch {
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        #pitch .video-container {
+            margin: 0 auto;
+            width: 700px;
+            height: 450px;
+        }
+
+        /* Updated portfolio section styles */
+        .portfolio-img {
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Skills specific styles */
+        .skills-list {
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(45deg, #f06, #3cf);
+            border-radius: 5px;
+            animation: skillFill 2s ease forwards;
+        }
+
+        /* Portfolio specific styles */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 150px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            transform: translateY(100%);
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-info {
+            transform: translateY(0);
+        }
+
+        .portfolio-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        @keyframes skillFill {
+            0% { width: 0; }
+            100% { width: var(--fill); }
+        }
+    </style>
 </head>
 
 <body>
     <header class="header">
-        <a href="#" class="logo">Prtfolio.</a>
+        <a href="#" class="logo">Portfolio.</a>
 
         <nav class="navbar">
-
-        <a href="#"  style="--i:1;" class="active" >Home</a>
-        <a href="#"  style="--i:2;">About</a>
-        <a href="#"  style="--i:3;">Skills</a>
-        <a href="#"  style="--i:4;">Portfolio</a>
-        <a href="#"  style="--i:5;">Contact</a>
-    </nav>
+            <a href="#home" style="--i:1;" class="active" data-section="home">Home</a>
+            <a href="#about" style="--i:2;" data-section="about">Bio</a>
+            <a href="#skills" style="--i:3;" data-section="skills">Skills</a>
+            <a href="#portfolio" style="--i:4;" data-section="portfolio">Portfolio</a>
+            <a href="#pitch" style="--i:5;" data-section="pitch">Elevator Pitch</a>
+        </nav>
     </header>
 
-    <section class="home">
+    <!-- Home Section -->
+    <section id="home" class="home section active">
         <div class="home-sci">
             <a href="#"><i class='bx bxl-discord'></i></a>
             <a href="#"><i class='bx bxl-twitter'></i></a>
@@ -33,10 +205,10 @@
         </div>
 
         <div class="home-content">
-            <h1> Hi, I'm Romeo Newo</h1>
+            <h1>Hi, I'm Romeo Newo</h1>
             <h3>Full-Stack Developer</h3>
             <p>I'm a full-stack software engineer specializing in backend development, trained at ALX. I build efficient, scalable solutions to power modern applications.</p>
-            <a href="#" class="btn">Hire Me</a>
+            <a href="#about" class="btn section-link" data-section="about">See Bio</a>
         </div>
 
         <div class="home-img">
@@ -44,11 +216,234 @@
                 <span></span>
                 <span></span>
                 <div class="image">
-                    <img src="romeo.png" alt="Romeo Newo">
+                    <img src="images/romeo.png" alt="Romeo Newo">
                 </div>
             </div>
         </div>
-        
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="about-content">
+            <h2>My Bio</h2>
+            <p>I am a high school graduate with a strong passion for technology and innovation.<br>
+            After completing my studies, I received full sponsorship from Mastercard to enroll in the 12-month ALX Software Engineering Program, which is affiliated with Holberton School.<br>
+            Through this rigorous program, I earned a certificate in Full-Stack Software Engineering, specializing in backend development.</p>
+            <p>To further prepare myself for studying, I joined the ALX Pathway Program, focusing on deepening my knowledge in Artificial Intelligence and Blockchain technology.<br>
+            I am deeply committed to leveraging this scholarship opportunity to enhance my skills and contribute to solving critical global challenges through innovative technological solutions.</p>
+            <p>This aligns perfectly with my vision of creating sustainable solutions, particularly in the world, using AI and advanced blockchain technologies.</p>
+            <a href="#portfolio" class="btn section-link" data-section="portfolio">See Portfolio</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="skills-content">
+            <h2>My Skills</h2>
+            <p>With a strong foundation in both frontend and backend technologies, I've developed a versatile skill set that allows me to build complete, end-to-end solutions. Here are some of my core competencies:</p>
+            
+            <div class="skills-list">
+                <div class="skill-item">
+                    <div class="skill-name">Frontend (HTML, CSS, JavaScript, React, Flutter)</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="--fill: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Backend (Node.js, Python, PHP)</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="--fill: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Database Management (SQL, MongoDB)</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="--fill: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">DevOps (Docker, CI/CD, AWS)</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="--fill: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">UI/UX Design</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="--fill: 75%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#portfolio" class="btn section-link" data-section="portfolio">See My Work</a>
+        </div>
+
+        <div class="skills-img">
+            <div class="glowing-circle">
+                <span></span>
+                <span></span>
+                <div class="image">
+                    <img src="romeo-skills.png" alt="Romeo's Skills">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="portfolio-content">
+            <h2>My Portfolio</h2>
+            <p>Among these projects below is one of the main projects I’m working on with my team in the Pathway program, which is a travel app preventing tourist scams by ensuring fair pricing, transparency, and trust, reducing financial loss and stress.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="images/search2.png" alt="semantic-search-engine">
+                    <div class="portfolio-info">
+                        <h3>Semantic-search-engine</h3>
+                        <p>A lightweight search engine using NLP for semantic search, ranking results by meaning over keywords.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="images/travel.png" alt="Worry-free Travel">
+                    <div class="portfolio-info">
+                        <h3>Worry-free Travel</h3>
+                        <p>A travel app preventing tourist scams by ensuring fair pricing, transparency, and trust, reducing financial loss and stress.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="images/car.png" alt=" Nextjs-Car_Collection_UI">
+                    <div class="portfolio-info">
+                        <h3> Nextjs-Car_Collection_UI</h3>
+                        <p>This is a Car Collection Sales Web App built with Next.js, showcasing a simple and interactive interface to browse through a collection of cars for sale.
+
+</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="images/financial.png" alt="Financial Dashboard">
+                    <div class="portfolio-info">
+                        <h3>Personal_Financial_Tracker</h3>
+                        <p>A cross-platform application with a Flutter frontend and a Django or Flask backend for seamless functionality.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <a href="#pitch" class="btn section-link" data-section="pitch">Let's Work Together</a> -->
+        </div>
+
+        <div class="portfolio-img">
+    <h2>MY Phase 2 Project</h2>
+    <div class="portfolio-item featured">
+        <img src="images/travel.png" alt="Worry-free Travel">
+        <div class="portfolio-info">
+            <h3>Worry-free Travel</h3>
+            <p>A travel app preventing tourist scams by ensuring fair pricing, transparency, and trust, reducing financial loss and stress.</p>
+        </div>
+    </div>
+    <div class="project-links">
+        <a href="https://drive.google.com/file/d/1zWJFLlguNauQxBIXmS6mFGNkOp942dFz/view" target="_blank" class="btn">Project Video</a>
+        <a href="https://drive.google.com/file/d/1uYohC0Vp3z4xWoWoifYCNO5ZG8R_DEZv/view?usp=sharing" target="_blank" class="btn">Project pdf</a>
+        <a href="https://www.canva.com/design/DAGb-SkfPwg/eDiM9AieHXxwaD706scvJw/edit?utm_content=DAGb-SkfPwg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="btn">Slide deck</a>
+        
+    </div>
+</div>
+
+<style>
+.portfolio-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.portfolio-img h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.portfolio-item.featured {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.portfolio-item.featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.project-links .btn {
+    padding: 10px 20px;
+    background: var(--bg-color);
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    color: var(--main-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-links .btn:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+</style>
+    </section>
+
+    <!-- Elevator Pitch Section -->
+    <section id="pitch" class="section">
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="pitch-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <script>
+        // Get all section links
+        const sectionLinks = document.querySelectorAll('.navbar a, .section-link');
+        const sections = document.querySelectorAll('.section');
+        
+        // Add click event listener to each link
+        sectionLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get the section ID to show
+                const sectionId = link.getAttribute('data-section');
+                
+                // Remove active class from all links and sections
+                document.querySelectorAll('.navbar a').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Add active class to clicked link and corresponding section
+                if (link.classList.contains('navbar-link')) {
+                    link.classList.add('active');
+                }
+                document.querySelector(`.navbar a[data-section="${sectionId}"]`).classList.add('active');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
