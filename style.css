@@ -308,6 +308,7 @@ body {
     transform: translateX(-50%);
     max-width:  350px;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 
@@ -387,5 +388,6 @@ body {
     100% {
         transform: rotate(360deg);
     }
-}
+}
+
 
